@@ -4,5 +4,9 @@ from django.http import HttpResponse
 # Create your views here.
 
 
-def members(request):
-    return HttpResponse("Hello world!")
+def home(request):
+    return render(request,"demo.html")
+def login(request):
+    return render(request,"login.html")
+def signup(request):
+    return render(request,"signup.html")
