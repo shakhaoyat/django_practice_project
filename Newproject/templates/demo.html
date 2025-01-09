@@ -7,6 +7,9 @@
 </head>
 <body>
       <h1>you are in Home page </h1>
+      {% for user in users %} 
+      <h1>hello {{user.Name}},Your email is{{user.Email}} </h1>
+      {% endfor %}
       <h1><a href="{%url 'login'%}">login</a></h1>
       <h1><a href="{%url 'signup'%}">signup</a></h1>
 
