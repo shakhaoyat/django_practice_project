@@ -9,6 +9,18 @@
       <h1>you are in Home page </h1>
       {% for user in Users %} 
       <h2>hello {{user.Name}},Your email is{{user.Email}} </h3>
+        
+      {% endfor %}
+
+      {% for user2 in User2 %}
+      <h2>Hello,{{user2.Name}}.
+          {% if user2.Prof == "Teacher" %} 
+          You're a teacher.
+          {% else %}
+          You're a student.
+          {% endif %} 
+      </h2> 
+      
       {% endfor %}
       <h1><a href="{%url 'login'%}">login</a></h1>
       <h1><a href="{%url 'signup'%}">signup</a></h1>

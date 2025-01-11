@@ -12,7 +12,13 @@ def home(request):
     dict_user.append(x)
     x={"Name":"Chad","Email":"Chad@xyz.com"}
     dict_user.append(x)
-    return render(request,"demo.html",{"Users":dict_user})
+
+    dict=[]
+    x={"Name":"Asif","Prof":"Teacher"}
+    dict.append(x)
+    x={"Name":"Shams","Prof":"Student"}
+    dict.append(x)
+    return render(request,"demo.html",{"Users":dict_user,"User2":dict})
 def login(request):
     return render(request,"login.html")
 def signup(request):
