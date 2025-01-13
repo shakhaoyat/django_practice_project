@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from home.forms import studentForm
 # Create your views here.
 
 
@@ -23,3 +23,7 @@ def login(request):
     return render(request,"login.html")
 def signup(request):
     return render(request,"signup.html")
+def studentForm(request):
+    if request.method == "POST":
+        form = studentForm()
+    return render(request,"input.html",{'form':form})
