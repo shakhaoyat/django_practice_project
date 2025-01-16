@@ -26,7 +26,7 @@ def signup(request):
     return render(request,"signup.html")
 def studentForm(request):
     if request.method == "POST":
-        form = StudentForm()
+        form = StudentForm(request.POST)
         newStudent = form.save()
         return HttpResponse("<h1>success</h1>")
     else:
@@ -35,13 +35,11 @@ def studentForm(request):
 def getinfo(request):
     if request.method == "POST":
         form = infoForm(request.POST)
+        print(form)
         name = form.cleaned_data['name']
         one_student = student.objects.get(Name=name)
         return render(request,"infoViewer.html",{'student':one_student})
         #do something
-
-
-
     else:
         newForm =infoForm()
-        return render(request,"studentInfo.html",{'form':newform})
+        return render(request,"studentInfo.html",{'form':newForm})
