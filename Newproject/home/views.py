@@ -33,13 +33,23 @@ def studentForm(request):
         form = StudentForm()
         return render(request,"input.html",{'form':form})
 def getinfo(request):
-    if request.method == "POST":
-        form = infoForm(request.POST)
-        print(form)
-        name = form.cleaned_data['name']
-        one_student = student.objects.get(Name=name)
-        return render(request,"infoViewer.html",{'student':one_student})
-        #do something
-    else:
-        newForm =infoForm()
-        return render(request,"studentInfo.html",{'form':newForm})
+    # if request.method == "POST":
+    #     form = infoForm(request.POST)
+    #     print(form)
+    #     name = form.cleaned_data['name']
+    #     one_student = student.objects.get(Name=name)
+    #     return render(request,"infoViewer.html",{'student':one_student})
+    #     #do something
+    # else:
+    #     newForm =infoForm()
+    #     return render(request,"studentInfo.html",{'form':newForm})
+
+    all_students = student.objects.all()
+    return render(request,"infoViewer.html",{"student":all_students})
+
+def getinfo(request):
+    pupil = student.objects.get(pk=1)
+    pupil_Cls =12
+    pupil.save()
+    all_students = student.objects.all()
+    return render(request,"infoViewer.html",{'student':all_students})

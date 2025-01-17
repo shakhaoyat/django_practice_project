@@ -5,9 +5,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Info</title>
 </head>
-<body>
+<body bgcolor="cyan">
+      {% for student in student %}
      <h2 align="center">{{student.Name}}</h2>
-     <h2 align="center">{{student.cls}}</h2>
+     <h2 align="center">{{student.Cls}}</h2>
      <h2 align="center">{{student.Roll}}</h2> 
+     {% endfor %}
 </body>
 </html>
