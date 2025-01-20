@@ -50,7 +50,7 @@ def studentForm(request):
 
 def getinfo(request):
     pupil = student.objects.get(pk=2)
-    pupil_Cls = 9
+    pupil_Cls = 2
     pupil.save()
     all_students = student.objects.all()
     # for s in all_students:
