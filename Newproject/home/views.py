@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from home.forms import StudentForm,infoForm
 from home.models import student
+from django.db import connection
 # Create your views here.
 
 
@@ -49,11 +50,27 @@ def studentForm(request):
 #     return render(request,"infoViewer.html",{"student":all_students})
 
 def getinfo(request):
-    pupil = student.objects.get(pk=2)
-    pupil_Cls = 2
-    pupil.save()
-    all_students = student.objects.all()
-    # for s in all_students:
-    #     s.Cls = 11
-    #     s.save()
-    return render(request,"infoViewer.html",{'student':all_students})
+    # pupil = student.objects.get(pk=2)
+    # pupil_Cls = 2
+    # pupil.save()
+    # all_students = student.objects.all()
+    # # for s in all_students:
+    # #     s.Cls = 11
+    # #     s.save()
+
+
+    # return render(request,"infoViewer.html",{'student':all_students})
+    cursor = connection.cursor()
+    sql = "SELECT * FROM student"
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    print(result)
+    all_student = []
+    for row in results:
+        name=row[1]
+        clas=row[2]
+        roll=row[3]
+        one={'name':name,'class':clas,'roll':roll}
+        all_students.append(one)
+        print(all_students)
+        return render(request,"infoViewer.html",{'student':all_students})
