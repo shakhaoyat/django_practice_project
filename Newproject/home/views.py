@@ -65,12 +65,12 @@ def getinfo(request):
     cursor.execute(sql)
     result = cursor.fetchall()
     print(result)
-    all_student = []
-    for row in results:
+    all_students = []
+    for row in result:
         name=row[1]
         clas=row[2]
         roll=row[3]
         one={'name':name,'class':clas,'roll':roll}
         all_students.append(one)
-        print(all_students)
+        
         return render(request,"infoViewer.html",{'student':all_students})
