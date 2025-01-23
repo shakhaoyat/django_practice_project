@@ -70,7 +70,7 @@ def getinfo(request):
         name=row[1]
         clas=row[2]
         roll=row[3]
-        one={'name':name,'class':clas,'roll':roll}
+        one={'Name':name,'Cls':clas,'Roll':roll}
         all_students.append(one)
         
         return render(request,"infoViewer.html",{'student':all_students})
